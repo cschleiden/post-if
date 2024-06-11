@@ -1,0 +1,15 @@
+name: 'test-action'
+author: 'cschleiden'
+inputs:
+  save-always:
+    description: 'Always run post'
+    default: 'false'
+    required: false    
+runs:
+  using: 'node20'
+  main: 'index.js'
+  post: 'index.js'
+  post-if: "success() || env['INPUT_SAVE-ALWAYS']"
+branding:
+  icon: 'archive'
+  color: 'gray-dark'
