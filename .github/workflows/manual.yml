@@ -1,0 +1,17 @@
+on: 
+  workflow_dispatch:
+    inputs:
+      fail:
+        type: boolean
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: "./"
+      with:
+        save-always: true
+    - run: exit 1
+      if: inputs.fail
